@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const courses = await getCollection('course');
+  return courses.map(course => ({
+    params: { slug: course.id },
+    props: course,
+  }));
+}
+
+type Props = CollectionEntry<'course'>;
+const course = Astro.props;
+const { title, description, status, image } = course.data;
+const { Content } = await render(course);
+---
+
+<Layout title={title} description={description}>
+	<main>
+		<article>
+			<h1 class="title">{title}</h1>
+      <p class="description">{description}</p>
+			{status && <p class="status">{status}</p>}
+      <Content />
+		</article>
+	</main>
+
+	<style>
+		article {
+			width: 720px;
+			max-width: calc(100% - 2em);
+			margin: auto;
+			padding: 1em;
+		}
+
+		.title {
+			margin-bottom: 0;
+		}
+
+		.status {
+			margin: 0.5em 0;
+			width: fit-content;
+
+			padding: 0.2em 0.3em !important;
+			border-radius: 0.7em;
+
+			color: var(--text) !important;
+			background: var(--accent);
+		}
+
+		.description {
+			margin-top: 0;
+			color: var(--muted);
+		}
+	</style>
+</Layout>

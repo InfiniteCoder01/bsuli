@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../logo.png';
+---
+
+<nav>
+	<a href="/"><Image src={logo} alt="BSULi" height="48" class="logo" /></a>
+	<a href="/course">Courses</a>
+</nav>
+
+<style>
+	nav {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+
+		border-bottom: 2px solid var(--border);
+		background: var(--surface);
+	}
+
+	.logo {
+	  /* IE, only works on <img> tags */
+	  -ms-interpolation-mode: nearest-neighbor;
+	  /* Firefox */
+	  image-rendering: crisp-edges;
+	  /* Chromium + Safari */
+	  image-rendering: pixelated;
+
+		padding-right: 1em;
+	}
+
+	h2 {
+		margin: 0;
+		width: 220px;
+	}
+
+	a {
+		font-size: 1.5em;
+		padding: 0.2em 0.4em;
+		color: var(--fg);
+	}
+</style>

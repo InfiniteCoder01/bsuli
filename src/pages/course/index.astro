@@ -1,0 +1,84 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const courses = await getCollection('course');
+---
+
+<Layout title="BSULi Courses" description="A list of courses we offer">
+	<h1 class="title">Courses we offer</h1>
+	<div class="cards">
+	  {courses.map(course => (
+	    <div class="card">
+				<Image src={course.data.image} height="80" alt="" />
+				<h3>{course.data.title}</h3>
+				{course.data.status && <p class="status">{course.data.status}</p>}
+				
+				<p>{course.data.description}</p>
+				<a href={`/course/${course.id}`}>See course</a>
+			</div>
+	  ))}
+	</div>
+
+	<style>
+		.title {
+			text-align: center;
+		}
+
+		.cards {
+		  display: grid;
+		  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 10px;
+
+			width: 1080px;
+			max-width: calc(100% - 2em);
+			margin: auto;
+			padding: 1em;
+		}
+
+		.card {
+			display: flex;
+			flex-direction: column;
+			height: 280px;
+
+		  background: var(--surface);
+		  border: 1px solid var(--border);
+		  border-radius: 16px;
+		  padding: 1rem;
+		  color: var(--text);
+		  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+		}
+
+		.card img {
+			padding-bottom: 1em;
+		}
+
+		.card h3 {
+		  margin: 0 0.35em 0.35rem 0;
+		  color: var(--primary-strong);
+		}
+
+		.status {
+			display: block;
+			font-size: 0.8em;
+			width: fit-content;
+		  margin-bottom: 0.5em !important;
+
+			padding: 0.2em 0.3em !important;
+			border-radius: 0.7em;
+
+			color: var(--text) !important;
+			background: var(--accent);
+		}
+
+		.card p {
+		  margin: 0;
+		  color: var(--muted);
+		}
+
+		.card a {
+			margin-top: auto;
+		}
+	</style>
+</Layout>
