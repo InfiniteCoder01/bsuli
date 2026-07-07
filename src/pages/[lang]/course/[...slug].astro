@@ -13,7 +13,6 @@ export async function getStaticPaths() {
   })));
 }
 
-console.log(Astro.props);
 type Props = CollectionEntry<'course'>;
 const course = Astro.props;
 const { title, description, status, image } = course.data;

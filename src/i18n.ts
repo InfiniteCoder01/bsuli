@@ -1,4 +1,5 @@
 export const locales = [ 'en', 'ru', 'be', 'la' ];
+export const localeNames = [ 'English', 'Русский', 'Беларуская', 'Latina' ];
 const translations: {[label: string]: {[lang: string]: string}} = {
   'BSULi': {
     'ru': 'БГУLi',

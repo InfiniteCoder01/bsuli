@@ -1,11 +1,14 @@
 ---
 import { Image } from 'astro:assets';
+import LanguageSelector from '~/components/LanguageSelector.astro';
+import ThemeToggle from '~/components/ThemeToggle.astro';
 import tux from './tux.png';
 import { tr, lnk } from '~/i18n.ts';
 ---
 
 <style>
 	nav {
+		order: -1;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -23,6 +26,26 @@ import { tr, lnk } from '~/i18n.ts';
 		padding: 0.2em 0.4em;
 		color: var(--fg);
 	}
+
+	.buttons-end {
+		display: flex;
+		margin-left: auto;
+		padding: 0.3em;
+		gap: 0.5em;
+	}
+
+	@media (max-width: 720px) {
+		nav {
+			justify-content: center;
+		}
+
+		.buttons-end {
+			display: flex;
+			margin-left: 0;
+			padding: 0.3em;
+			gap: 0.5em;
+		}
+	}
 </style>
 
 <nav>
@@ -31,4 +54,8 @@ import { tr, lnk } from '~/i18n.ts';
 		<h2 style="display: inline; padding-top: 5%">{tr`BSULi`}</h2>
 	</a>
 	<a href={lnk`/course`}>{tr`Courses`}</a>
+	<div class="buttons-end">
+		<LanguageSelector />
+		<ThemeToggle />
+	</div>
 </nav>

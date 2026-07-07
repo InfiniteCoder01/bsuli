@@ -1,0 +1,22 @@
+---
+import { locales, localeNames } from '~/i18n.ts';
+const current = Astro.params.lang;
+---
+
+<style>
+.language-selector {
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  padding: 1em;
+}
+</style>
+
+<select class="language-selector" onChange={`window.location.href = window.location.href.replace('/${current}', this.value);`}>
+  {locales.map((lang, i) => (
+    <option value={`/${lang}`} selected={lang === current}>
+      {localeNames[i]}
+    </option>
+  ))}
+</select>
