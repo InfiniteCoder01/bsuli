@@ -1,3 +1,7 @@
+---
+import { trinl } from '~/i18n.ts';
+---
+
 <style>
 	footer {
 		border-top: 2px solid var(--border);
@@ -9,5 +13,10 @@
 </style>
 
 <footer>
-	Who would read this? Whoever you are, you are very observant. Have fun!
+	{trinl({
+		'en': 'Who would read this? Whoever you are, you are very observant. Have fun!',
+		'ru': 'Кто бы это читал? Кем бы вы ни были, вы очень наблюдательны. Веселитесь!',
+		'be': 'Хто б гэта чытаў? Кім бы вы ні былі, вы вельмі назіральныя. Весяліцеся!',
+		'la': 'Quis hoc legeret? Quicumque es, valde observans es. Fruere!',
+	})}
 </footer>

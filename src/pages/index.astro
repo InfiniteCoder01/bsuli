@@ -1,21 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+// Redirect from base to /en/
 ---
 
-<Layout title="BSULi" description="A real website for an imaginary university.">
-	<style>
-		main {
-			flex-grow: 1;
-			width: 1080px;
-			max-width: calc(100% - 2em);
-			margin: auto;
-		}
-	</style>
-
-	<main>
-		<h1>BSULi</h1>
-		A real website for an imaginary university.
-		<br>
-		Contrary to popular belief, I did actually teach people. And roadmaps I made can be found here for free!
-	</main>
-</Layout>
+<meta http-equiv="refresh" content={`0;url=/en`} />

@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import tux from '../tux.png';
+import tux from './tux.png';
+import { tr, lnk } from '~/i18n.ts';
 ---
 
 <style>
@@ -25,9 +26,9 @@ import tux from '../tux.png';
 </style>
 
 <nav>
-	<a class="logo" href="/">
+	<a class="logo" href={lnk``}>
 		<Image src={tux} height="48" alt="" />
-		<h2 style="display: inline; padding-top: 5%">BSULi</h2>
+		<h2 style="display: inline; padding-top: 5%">{tr`BSULi`}</h2>
 	</a>
-	<a href="/course">Courses</a>
+	<a href={lnk`/course`}>{tr`Courses`}</a>
 </nav>

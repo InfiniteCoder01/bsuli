@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import Status from '~/components/Status.astro';
+import type { CollectionEntry } from 'astro:content';
+import { tr, lnk } from '~/i18n.ts';
+
+interface Props {
+	course: CollectionEntry<'course'>,
+}
+
+const { course } = Astro.props;
+---
+
+<style>
+	.card {
+		display: flex;
+		flex-direction: column;
+		height: 280px;
+
+	  background: var(--surface);
+	  border: 1px solid var(--border);
+	  border-radius: 16px;
+	  padding: 1rem;
+	  color: var(--text);
+	  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+	}
+
+	.card img {
+		padding-bottom: 1em;
+	}
+
+	.card h3 {
+	  margin: 0 0.35em 0.35rem 0;
+	  color: var(--primary-strong);
+	}
+
+	.card p {
+	  margin: 0;
+	  color: var(--muted);
+	}
+
+	.card a {
+		margin-top: auto;
+	}
+</style>
+
+<div class="card">
+	<Image src={course.data.image} height="80" alt="" />
+	<h3>{course.data.title}</h3>
+	<Status status={course.data.status} />
+
+	<p>{course.data.description}</p>
+	<a href={lnk(`/course/${course.id}`)}>{tr`See course`}</a>
+</div>

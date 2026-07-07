@@ -1,16 +1,18 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Status from '../../components/Status.astro';
+import Layout from '~/Layout.astro';
+import Status from '~/components/Status.astro';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
+import { locales, tr } from '~/i18n.ts';
 
 export async function getStaticPaths() {
   const courses = await getCollection('course');
-  return courses.map(course => ({
-    params: { slug: course.id },
+  return locales.flatMap(lang => courses.map(course => ({
+    params: { lang, slug: course.id },
     props: course,
-  }));
+  })));
 }
 
+console.log(Astro.props);
 type Props = CollectionEntry<'course'>;
 const course = Astro.props;
 const { title, description, status, image } = course.data;
