@@ -1,6 +1,8 @@
 ---
 import Layout from '~/Layout.astro';
 import { routes, tr, trinl } from '~/i18n.ts';
+process.env.lang = Astro.params.lang;
+
 export async function getStaticPaths() { return routes(); }
 ---
 

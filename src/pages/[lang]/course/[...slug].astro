@@ -3,6 +3,7 @@ import Layout from '~/Layout.astro';
 import Status from '~/components/Status.astro';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import { locales, tr } from '~/i18n.ts';
+process.env.lang = Astro.params.lang;
 
 export async function getStaticPaths() {
   const courses = await getCollection('course');

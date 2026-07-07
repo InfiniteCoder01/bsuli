@@ -37,7 +37,6 @@ export function routes() {
 }
 
 export function lnk(url: string) {
-  console.log(url)
   return `/${process.env.lang}${url}`;
 }
 
