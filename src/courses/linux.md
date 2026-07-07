@@ -8,6 +8,7 @@ image: 'linux.png'
 ## Resources
 - https://overthewire.org/wargames/bandit
 - https://roadmap.sh/linux
+- https://roadmap.sh/shell-bash
 
 ## Roadmap
 1. Shell is just a programming language. BASH is a program. Basic command syntax.

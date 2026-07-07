@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Status from '../../components/Status.astro';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -21,7 +22,7 @@ const { Content } = await render(course);
 		<article>
 			<h1 class="title">{title}</h1>
       <p class="description">{description}</p>
-			{status && <p class="status">{status}</p>}
+			<Status status={status} />
       <Content />
 		</article>
 	</main>
@@ -36,17 +37,6 @@ const { Content } = await render(course);
 
 		.title {
 			margin-bottom: 0;
-		}
-
-		.status {
-			margin: 0.5em 0;
-			width: fit-content;
-
-			padding: 0.2em 0.3em !important;
-			border-radius: 0.7em;
-
-			color: var(--text) !important;
-			background: var(--accent);
 		}
 
 		.description {

@@ -1,12 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import logo from '../logo.png';
+import tux from '../tux.png';
 ---
-
-<nav>
-	<a href="/"><Image src={logo} alt="BSULi" height="48" class="logo" /></a>
-	<a href="/course">Courses</a>
-</nav>
 
 <style>
 	nav {
@@ -18,20 +13,8 @@ import logo from '../logo.png';
 		background: var(--surface);
 	}
 
-	.logo {
-	  /* IE, only works on <img> tags */
-	  -ms-interpolation-mode: nearest-neighbor;
-	  /* Firefox */
-	  image-rendering: crisp-edges;
-	  /* Chromium + Safari */
-	  image-rendering: pixelated;
-
-		padding-right: 1em;
-	}
-
-	h2 {
-		margin: 0;
-		width: 220px;
+	.logo > * {
+		vertical-align: middle;
 	}
 
 	a {
@@ -40,3 +23,11 @@ import logo from '../logo.png';
 		color: var(--fg);
 	}
 </style>
+
+<nav>
+	<a class="logo" href="/">
+		<Image src={tux} height="48" alt="" />
+		<h2 style="display: inline; padding-top: 5%">BSULi</h2>
+	</a>
+	<a href="/course">Courses</a>
+</nav>

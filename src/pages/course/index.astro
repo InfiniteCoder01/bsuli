@@ -1,27 +1,21 @@
 ---
 import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
+import Status from '../../components/Status.astro';
 import { getCollection } from 'astro:content';
 
 const courses = await getCollection('course');
 ---
 
 <Layout title="BSULi Courses" description="A list of courses we offer">
-	<h1 class="title">Courses we offer</h1>
-	<div class="cards">
-	  {courses.map(course => (
-	    <div class="card">
-				<Image src={course.data.image} height="80" alt="" />
-				<h3>{course.data.title}</h3>
-				{course.data.status && <p class="status">{course.data.status}</p>}
-				
-				<p>{course.data.description}</p>
-				<a href={`/course/${course.id}`}>See course</a>
-			</div>
-	  ))}
-	</div>
-
 	<style>
+		main {
+			flex-grow: 1;
+			width: 1080px;
+			max-width: calc(100% - 2em);
+			margin: auto;
+		}
+
 		.title {
 			text-align: center;
 		}
@@ -30,10 +24,6 @@ const courses = await getCollection('course');
 		  display: grid;
 		  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 			gap: 10px;
-
-			width: 1080px;
-			max-width: calc(100% - 2em);
-			margin: auto;
 			padding: 1em;
 		}
 
@@ -59,19 +49,6 @@ const courses = await getCollection('course');
 		  color: var(--primary-strong);
 		}
 
-		.status {
-			display: block;
-			font-size: 0.8em;
-			width: fit-content;
-		  margin-bottom: 0.5em !important;
-
-			padding: 0.2em 0.3em !important;
-			border-radius: 0.7em;
-
-			color: var(--text) !important;
-			background: var(--accent);
-		}
-
 		.card p {
 		  margin: 0;
 		  color: var(--muted);
@@ -81,4 +58,20 @@ const courses = await getCollection('course');
 			margin-top: auto;
 		}
 	</style>
+
+	<main>
+		<h1 class="title">Courses we offer</h1>
+		<div class="cards">
+		  {courses.map(course => (
+		    <div class="card">
+					<Image src={course.data.image} height="80" alt="" />
+					<h3>{course.data.title}</h3>
+					<Status status={course.data.status} />
+				
+					<p>{course.data.description}</p>
+					<a href={`/course/${course.id}`}>See course</a>
+				</div>
+		  ))}
+		</div>
+	</main>
 </Layout>
