@@ -55,7 +55,7 @@ export function trinl<T>(map: {[lang: string]: T}, lang?: string): T {
 export function tr(raw: [string], lang?: string): string {
   const label = raw[0];
   if (label in translations)
-    return trinl(translations[label], lang) || label;
+    return pickTranslation(translations[label], lang) || label;
   return label;
 }
 
