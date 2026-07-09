@@ -41,16 +41,38 @@ export function lnk(url: string) {
   return `/${process.env.lang}${url}`;
 }
 
-export function trinl(map: {[lang: string]: string}) {
-  const lang = process.env.lang || 'en';
+export function pickTranslation<T>(map: {[lang: string]: T}, lang?: string): T | null {
+  lang = lang || process.env.lang || 'en';
   if (lang in map) return map[lang];
   else if ('en' in map) return map['en'];
   else return null;
 }
 
-export function tr(raw: [string]) {
+export function trinl<T>(map: {[lang: string]: T}, lang?: string): T {
+  return pickTranslation(map, lang) || Object.values(map)[0];
+}
+
+export function tr(raw: [string], lang?: string): string {
   const label = raw[0];
   if (label in translations)
-    return trinl(translations[label]) || label;
+    return trinl(translations[label], lang) || label;
   return label;
+}
+
+export function translateCollection<T extends { id: string }>(collection: T[], lang?: string): T[] {
+  let by_id: {[id: string]: {[lang: string]: T}} = {}
+  for (const entry of collection) {
+    const sep = entry.id.indexOf('/');
+    const lang = entry.id.slice(0, sep);
+    const id = entry.id.slice(sep + 1);
+    by_id[id] = by_id[id] || {};
+    by_id[id][lang] = { ...entry, id };
+  }
+
+  let translated = [];
+  for (const entry of Object.values(by_id)) {
+    translated.push(trinl(entry, lang));
+  }
+
+  return translated;
 }

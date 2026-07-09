@@ -2,7 +2,7 @@
 title: 'Linux for beginners'
 description: 'Join the penguin cult!'
 status: 'Planned'
-image: 'linux.png'
+image: '../linux.png'
 ---
 
 ## Resources

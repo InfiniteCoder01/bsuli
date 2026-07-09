@@ -2,7 +2,7 @@
 title: 'The C Programming Language'
 description: 'Way to teach beginners C through game development'
 status: 'WIP'
-image: 'c.png'
+image: '../c.png'
 ---
 
 NOTE: With no prior programming knowledge, I strongly recommend
@@ -35,7 +35,7 @@ much easier for the student to learn C.
 7. Strings (character arrays with zero-termination). Character literals. Some string functions (like `strlen`, `strchr`). Mention pointers (`const char *`).
    Make some text games, f.e. hangman.
 
-7. Functions, parameters, return statement. Make some simple conversion functions.  Make more games (f.e. connect four), show how useful functions are.
+7. Functions, parameters, `return` statement. Make some simple conversion functions.  Make more games (f.e. connect four), show how useful functions are.
 
 7. Read some simple C code. I couldn't find any good real-world examples so I had to rewrite some of my C++ into simpler C. Introduce type sizes (bits, bytes and words, `int16_t`, `size_t`).
 

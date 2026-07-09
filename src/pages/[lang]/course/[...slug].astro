@@ -2,12 +2,12 @@
 import Layout from '~/Layout.astro';
 import Status from '~/components/Status.astro';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import { locales, tr } from '~/i18n.ts';
+import { locales, tr, translateCollection } from '~/i18n.ts';
 process.env.lang = Astro.params.lang;
 
 export async function getStaticPaths() {
   const courses = await getCollection('course');
-  return locales.flatMap(lang => courses.map(course => ({
+  return locales.flatMap(lang => translateCollection(courses, lang).map(course => ({
     params: { lang, slug: course.id },
     props: course,
   })));

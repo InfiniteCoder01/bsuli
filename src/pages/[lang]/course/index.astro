@@ -2,11 +2,11 @@
 import Layout from '~/Layout.astro';
 import CourseCard from '~/components/CourseCard.astro';
 import { getCollection } from 'astro:content';
-import { routes, tr } from '~/i18n.ts';
+import { routes, tr, translateCollection } from '~/i18n.ts';
 process.env.lang = Astro.params.lang;
 
 export async function getStaticPaths() { return routes(); }
-const courses = await getCollection('course');
+const courses = translateCollection(await getCollection('course'));
 ---
 
 <Layout title={tr`BSULi Courses`} description={tr`Courses we offer`}>
