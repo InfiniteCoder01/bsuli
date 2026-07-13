@@ -12,11 +12,12 @@ image: '../linux.png'
 
 ## Roadmap
 1. Shell is just a programming language. BASH is a program. Basic command syntax.
-
+2. `--help`, `man`, `tldr`
 2. Paths, `cd`, `ls`, `tree`, `pwd`, `find`, `cat`.
    File navigation, root directory (unline drives in Windows).
    Linux directory structure, programs in /.../bin, FHS.
    Go through https://overthewire.org/wargames/bandit.
+   Mention `man`, `tldr`.
 
 3. Three file descriptors, mention EOS (Ctrl+D).
    Pipes, redirects, `head`, `tail`, `grep`, `sort`.
